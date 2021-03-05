@@ -66,3 +66,23 @@ end note
 ```
 
 ![0.5: Single page app](0.5.png "0.5: Single page app")
+
+
+## 0.6: New note
+
+```
+title 0.6: New note
+
+note over browser
+POST request to the address 
+new_note_spa contains new note
+as JSON-data containing both the 
+content of the note (content) and 
+the timestamp (date)
+end note
+
+browser->server:  HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: HTTP status code 302
+```
+
+![0.6: New note](0.6.png "0.6: New note")
