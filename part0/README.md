@@ -82,7 +82,7 @@ the timestamp (date)
 end note
 
 browser->server:  HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-server-->browser: HTTP status code 302
+server-->browser: HTTP status code 201
 ```
 
 ![0.6: New note](0.6.png "0.6: New note")
