@@ -12,7 +12,7 @@ Other topics include debugging applications, configuration, managing runtime env
 
 | Part      | Exercises   |
 | --------- | ----------- |
-| 0         | 0/6         |
+| 0         | 6/6         |
 | 1         | 0/14       |
 | 2         | 0/20       |
 | 3         | 0/22       |
