@@ -1,12 +1,8 @@
-# [Full Stack Open 2020](https://fullstackopen.com/en/ 'Full Stack Open 2020 Homepage')
+# [Full Stack Open 2021](https://fullstackopen.com/en/ 'Full Stack Open 2021 Homepage')
 
-Learn React, Redux, Node.js, MongoDB, GraphQL and TypeScript in one go! This course will introduce you to modern JavaScript-based web development. The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js.
+This course by the University of Helsinki is an introduction to modern web development with JavaScript. The main focus is on single page applications implemented with React and supporting them with RESTful and GraphQL web services implemented with Node.js. New for this year's course is a part on TypeScript. Other topics include debugging applications, configuration, managing runtime environments and NoSQL databases.
 
-## General
-
-This course is an introduction to modern web development with JavaScript. The main focus is on single page applications implemented with React and supporting them with RESTful and GraphQL web services implemented with Node.js. New for this year's course is a part on TypeScript.
-
-Other topics include debugging applications, configuration, managing runtime environments and NoSQL databases.
+This repo contains solutions to the 2021 course exercises.
 
 ## Exercises done per round
 
