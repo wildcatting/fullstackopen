@@ -9,7 +9,7 @@ This repo contains solutions to the 2021 course exercises.
 | Part      | Exercises   |
 | --------- | ----------- |
 | 0         | 6/6         |
-| 1         | 0/14       |
+| 1         | 2/14       |
 | 2         | 0/20       |
 | 3         | 0/22       |
 | 4         | 0/22       |
@@ -19,7 +19,7 @@ This repo contains solutions to the 2021 course exercises.
 | 8         | 0/26       |
 | 9         | 0/27       |
 | 10        | 0/27         |
-| **Total** | **0/228** |
+| **Total** | **8/228** |
 
 ## Course material
 
