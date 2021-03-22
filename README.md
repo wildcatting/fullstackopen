@@ -23,12 +23,12 @@ This repo contains solutions to the 2021 course exercises.
 
 ## Course material
 
-### Part 0: Fundamentals of Web apps
+### [Part 0: Fundamentals of Web apps](https://fullstackopen.com/en/part0)
 
 - [General info](https://fullstackopen.com/en/part0/general_info)
 - [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
-### Part 1: Introduction to React
+### [Part 1: Introduction to React](https://fullstackopen.com/en/part1)
 
 - [Introduction to React](https://fullstackopen.com/en/part1/introduction_to_react)
 - [Javascript](https://fullstackopen.com/en/part1/java_script)
