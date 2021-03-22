@@ -1,10 +1,11 @@
 # [Full Stack Open 2021](https://fullstackopen.com/en/ 'Full Stack Open 2021 Homepage')
 
-This course by the University of Helsinki is an introduction to modern web development with JavaScript. The main focus is on single page applications implemented with React and supporting them with RESTful and GraphQL web services implemented with Node.js. New for this year's course is a part on TypeScript. Other topics include debugging applications, configuration, managing runtime environments and NoSQL databases.
+This course by the University of Helsinki is an introduction to modern web development with JavaScript. The focus is on single page applications implemented with React and supported with RESTful and GraphQL web services implemented with Node.js. New material on TypeScript is included in the 2021 edition. Other topics include debugging applications, configuration, and managing runtime environments and NoSQL databases.
 
-This repo contains solutions to the 2021 course exercises.
+This repo contains my submissions to the 2021 course exercises.
 
-## Exercises Completed
+
+## Course Progress
 
 | Part      | Exercises   |
 | --------- | ----------- |
@@ -20,6 +21,7 @@ This repo contains solutions to the 2021 course exercises.
 | 9         | 0/27       |
 | 10        | 0/27         |
 | **Total** | **8/228** |
+
 
 ## Table of Contents
 
