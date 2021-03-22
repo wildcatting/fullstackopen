@@ -4,7 +4,7 @@ This course by the University of Helsinki is an introduction to modern web devel
 
 This repo contains solutions to the 2021 course exercises.
 
-## Exercises done per round
+## Exercises Completed
 
 | Part      | Exercises   |
 | --------- | ----------- |
@@ -21,7 +21,7 @@ This repo contains solutions to the 2021 course exercises.
 | 10        | 0/27         |
 | **Total** | **8/228** |
 
-## Course material
+## Table of Contents
 
 ### [Part 0: Fundamentals of Web apps](https://fullstackopen.com/en/part0)
 
