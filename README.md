@@ -25,13 +25,13 @@ This repo contains solutions to the 2021 course exercises.
 
 ### Part 0: Fundamentals of Web apps
 
-- General info
-- Fundamentals of Web apps
+- [General info](https://fullstackopen.com/en/part0/general_info)
+- [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
 ### Part 1: Introduction to React
 
-- Introduction to React
-- Javascript
+- [Introduction to React](https://fullstackopen.com/en/part1/introduction_to_react)
+- [Javascript](https://fullstackopen.com/en/part1/java_script)
 - Component state, event handlers
 - A more complex state, debugging React apps
 
