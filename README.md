@@ -34,7 +34,7 @@ This repo contains my submissions to the 2021 course exercises.
 
 - [Introduction to React](https://fullstackopen.com/en/part1/introduction_to_react)
 - [Javascript](https://fullstackopen.com/en/part1/java_script)
-- Component state, event handlers
+- [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)
 - A more complex state, debugging React apps
 
 ### Part 2: Communicating with server
