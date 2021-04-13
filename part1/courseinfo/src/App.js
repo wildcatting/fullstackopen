@@ -13,7 +13,7 @@ const Content = ({course}) =>
 
 const Total = ({course}) => <p>Number of exercises {course.parts[0].exercise + course.parts[1].exercise + course.parts[2].exercise}</p>
 
-const App = () => {
+const App = () => {  
   const course = {
     name: 'Half Stack application development',
     parts: [
