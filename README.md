@@ -10,7 +10,7 @@ This repo contains my submissions to the 2021 course exercises.
 | Part      | Exercises   |
 | --------- | ----------- |
 | 0         | 6/6         |
-| 1         | 5/14       |
+| 1         | 11/14       |
 | 2         | 0/20       |
 | 3         | 0/22       |
 | 4         | 0/22       |
@@ -20,7 +20,7 @@ This repo contains my submissions to the 2021 course exercises.
 | 8         | 0/26       |
 | 9         | 0/27       |
 | 10        | 0/27         |
-| **Total** | **11/228** |
+| **Total** | **17/228** |
 
 
 ## Table of Contents
