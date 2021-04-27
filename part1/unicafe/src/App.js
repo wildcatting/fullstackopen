@@ -6,8 +6,54 @@ const Header = () =>
 const Results = () => 
   <h2>statistics</h2>
 
-const Display = props => 
-  <div>{props.text} {props.value} {props.symbol}</div>
+const Statistic = (props) => 
+  <>
+    {props.text} {props.value} {props.symbol}
+  </>
+
+const Statistics = (props) => {
+  const total = props.good + props.neutral + props.bad
+  const average = (props.good - props.bad) / total
+  const positive = props.good / total * 100
+
+  if (total === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  }
+  return (
+    <>
+      <table>
+          <tbody>
+              <tr>
+                  <td><Statistic text="good" /></td>
+                  <td><Statistic value={props.good} /></td>
+              </tr>
+              <tr>
+                  <td><Statistic text="neutral" /></td>
+                  <td><Statistic value={props.neutral} /></td>
+              </tr>
+              <tr>
+                  <td><Statistic text="bad" /></td>
+                  <td><Statistic value={props.bad} /></td>
+              </tr>
+              <tr>
+                  <td><Statistic text="total" /></td>
+                  <td><Statistic value={total} /></td>
+              </tr>
+              <tr>
+                  <td><Statistic text="average" /></td>
+                  <td><Statistic value={average} /></td>
+              </tr>
+              <tr>
+                  <td><Statistic text="positive" /></td>
+                  <td><Statistic value={positive} symbol="%" /></td>
+              </tr>
+          </tbody>
+      </table>
+    </>
+  )
+}
 
 const Button = (props) => (
   <button onClick={props.handleClick}>
@@ -20,32 +66,14 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const goodClick = () =>
-    setGood(good + 1)
-
-  const neutralClick = () =>
-    setNeutral(neutral + 1)
-
-  const badClick = () =>
-    setBad(bad + 1)
-
-  const Total = good + neutral + bad
-  const Average = (good - bad) / Total
-  const Positive = good / Total * 100
-
   return (
     <>
       <Header />
-      <Button handleClick={goodClick} text="good" />
-      <Button handleClick={neutralClick} text="neutral" />
-      <Button handleClick={badClick} text="bad" />
+      <Button handleClick={() => setGood(good + 1)} text="good" />
+      <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
+      <Button handleClick={() => setBad(bad + 1)} text="bad" />
       <Results />
-      <Display value={good} text="good" />
-      <Display value={neutral} text="neutral" />
-      <Display value={bad} text="bad" />
-      <Display value={Total} text="all" />
-      <Display value={Average} text="average" />
-      <Display value={Positive} text="positive" symbol="%" />
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </>
   )
 }
