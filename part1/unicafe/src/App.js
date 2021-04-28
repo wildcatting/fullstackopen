@@ -8,7 +8,9 @@ const Results = () =>
 
 const Statistic = (props) => 
   <>
-    {props.text} {props.value} {props.symbol}
+    {props.text}
+    {props.value}
+    {props.symbol}
   </>
 
 const Statistics = (props) => {
@@ -24,32 +26,32 @@ const Statistics = (props) => {
   return (
     <>
       <table>
-          <tbody>
-              <tr>
-                  <td><Statistic text="good" /></td>
-                  <td><Statistic value={props.good} /></td>
-              </tr>
-              <tr>
-                  <td><Statistic text="neutral" /></td>
-                  <td><Statistic value={props.neutral} /></td>
-              </tr>
-              <tr>
-                  <td><Statistic text="bad" /></td>
-                  <td><Statistic value={props.bad} /></td>
-              </tr>
-              <tr>
-                  <td><Statistic text="total" /></td>
-                  <td><Statistic value={total} /></td>
-              </tr>
-              <tr>
-                  <td><Statistic text="average" /></td>
-                  <td><Statistic value={average} /></td>
-              </tr>
-              <tr>
-                  <td><Statistic text="positive" /></td>
-                  <td><Statistic value={positive} symbol="%" /></td>
-              </tr>
-          </tbody>
+        <tbody>
+          <tr>
+            <td><Statistic text="good" /></td>
+            <td><Statistic value={props.good} /></td>
+          </tr>
+          <tr>
+            <td><Statistic text="neutral" /></td>
+            <td><Statistic value={props.neutral} /></td>
+          </tr>
+          <tr>
+            <td><Statistic text="bad" /></td>
+            <td><Statistic value={props.bad} /></td>
+          </tr>
+          <tr>
+            <td><Statistic text="total" /></td>
+            <td><Statistic value={total} /></td>
+          </tr>
+          <tr>
+            <td><Statistic text="average" /></td>
+            <td><Statistic value={average} /></td>
+          </tr>
+          <tr>
+            <td><Statistic text="positive" /></td>
+            <td><Statistic value={positive} symbol="%" /></td>
+          </tr>
+        </tbody>
       </table>
     </>
   )
