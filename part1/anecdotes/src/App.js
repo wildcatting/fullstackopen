@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+const Header = ({children}) => 
+  <h2>{children}</h2>
+
 const Button = ({handleClick, text}) => (
   <button onClick={handleClick}> {text} </button>
 )
@@ -30,10 +33,14 @@ const App = () => {
 
   return (
     <>
+      <Header>Anecdote of the day</Header>
       <p>{anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <Button handleClick={castVote} text="vote" />
       <Button handleClick={getRandomAnecdote} text="next anecdote" />
+      <Header>Anecdote with most votes</Header>
+      <p></p>
+      <p></p>
     </>
   )
 }
