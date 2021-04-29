@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 
-const Header = () => 
-  <h2>give feedback</h2>
+const Header = ({children}) => 
+  <h2>{children}</h2>
 
-const Results = () => 
-  <h2>statistics</h2>
-
-const Statistic = (props) => 
+const Statistic = ({text, value, symbol}) => 
   <>
-    {props.text}
-    {props.value}
-    {props.symbol}
+    {text}
+    {value}
+    {symbol}
   </>
 
-const Statistics = (props) => {
-  const total = props.good + props.neutral + props.bad
-  const average = (props.good - props.bad) / total
-  const positive = props.good / total * 100
+const Statistics = ({good, neutral, bad}) => {
+  const total = good + neutral + bad
+  const average = (good - bad) / total
+  const positive = good / total * 100
 
   if (total === 0) {
     return (
@@ -29,15 +26,15 @@ const Statistics = (props) => {
         <tbody>
           <tr>
             <td><Statistic text="good" /></td>
-            <td><Statistic value={props.good} /></td>
+            <td><Statistic value={good} /></td>
           </tr>
           <tr>
             <td><Statistic text="neutral" /></td>
-            <td><Statistic value={props.neutral} /></td>
+            <td><Statistic value={neutral} /></td>
           </tr>
           <tr>
             <td><Statistic text="bad" /></td>
-            <td><Statistic value={props.bad} /></td>
+            <td><Statistic value={bad} /></td>
           </tr>
           <tr>
             <td><Statistic text="total" /></td>
@@ -57,9 +54,9 @@ const Statistics = (props) => {
   )
 }
 
-const Button = (props) => (
-  <button onClick={props.handleClick}>
-    {props.text}
+const Button = ({handleClick, text}) => (
+  <button onClick={handleClick}>
+    {text}
   </button>
 )
 
@@ -70,11 +67,11 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <Header>give feedback</Header>
       <Button handleClick={() => setGood(good + 1)} text="good" />
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="bad" />
-      <Results />
+      <Header>statistics</Header>
       <Statistics good={good} neutral={neutral} bad={bad} />
     </>
   )
