@@ -25,18 +25,30 @@ const App = () => {
     setSelected(randomNumber)
   }
 
-  const castVote = () => {
+  const Vote = () => {
     const addPoint = [...points] 
     addPoint[selected] += 1
     setPoints(addPoint)
   }
+  
+  const getFavorite = () => {
+    points.forEach(function(item){
+
+    })
+    return (
+      <>
+        
+      </>
+    )
+  }
+
 
   return (
     <>
       <Header>Anecdote of the day</Header>
       <p>{anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
-      <Button handleClick={castVote} text="vote" />
+      <Button handleClick={Vote} text="vote" />
       <Button handleClick={getRandomAnecdote} text="next anecdote" />
       <Header>Anecdote with most votes</Header>
       <p></p>
