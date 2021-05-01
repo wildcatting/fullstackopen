@@ -4,7 +4,7 @@ const Header = ({children}) =>
   <h2>{children}</h2>
 
 const Button = ({handleClick, text}) => (
-  <button onClick={handleClick}> {text} </button>
+  <button onClick={handleClick}>{text}</button>
 )
 
 const App = () => {
@@ -20,26 +20,27 @@ const App = () => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState(Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0))
   
-  const getRandomAnecdote = () => {
-    const randomNumber = Math.floor(Math.random() * anecdotes.length);
-    setSelected(randomNumber)
+  const getRandomAnecdote = () =>
+    setSelected(() => Math.floor(Math.random() * anecdotes.length))
+
+  const GetFavorite = () => {
+    let favorite = Math.max(...points)
+    let position = points.indexOf(favorite)
+
+    if (favorite === 0) {
+      return (
+        <p>no feedback given</p>
+      )
+    }
+    return (
+      anecdotes[position]
+    )
   }
 
   const Vote = () => {
     const addPoint = [...points] 
     addPoint[selected] += 1
     setPoints(addPoint)
-  }
-  
-  const getFavorite = () => {
-    points.forEach(function(item){
-
-    })
-    return (
-      <>
-        
-      </>
-    )
   }
 
 
@@ -51,8 +52,8 @@ const App = () => {
       <Button handleClick={Vote} text="vote" />
       <Button handleClick={getRandomAnecdote} text="next anecdote" />
       <Header>Anecdote with most votes</Header>
-      <p></p>
-      <p></p>
+      <GetFavorite />
+      <p>has {points[selected]} votes</p>
     </>
   )
 }
