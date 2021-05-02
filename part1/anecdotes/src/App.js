@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const Header = ({children}) => 
   <h2>{children}</h2>
 
-
 const DisplayAnecdote = ({anecdotes, points}) => {
   return (
     <>
