@@ -1,16 +1,12 @@
 import React from 'react'
-import Note from './components/Course'
+import Course from './components/Course'
 
-const App = ({ notes }) => {
+const App = ({course}) => {
+  console.log('props value is', {course})
   return (
-    <div>
-      <h1>Notes</h1>
-      <ul>
-        {notes.map(note => 
-            <Note key={note.id} note={note} />
-        )}
-      </ul>
-    </div>
+    <>
+      <Course course={course} />
+    </>
   )
 }
 
