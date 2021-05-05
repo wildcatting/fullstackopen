@@ -28,22 +28,23 @@ const Header = () => {
   )
 }
 
-const Total = ({ course }) => {
+const Total = () => {
   const sum = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises + course.parts[3].exercises
+  console.log(course.parts)
   return(
     <b>total of {sum} exercises</b>
   ) 
 }
 
-const Part = (props) => {
+const Part = ({part}) => {
   return (
     <p>
-      {props.part.name} {props.part.exercises}
+      {part.name} {part.exercises}
     </p>    
   )
 }
 
-const Content = ({ course }) => {
+const Content = () => {
   return (
     <div>
       <Part part={course.parts[0]} />
