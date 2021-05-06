@@ -29,8 +29,10 @@ const Header = () => {
 }
 
 const Total = () => {
-  const sum = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises + course.parts[3].exercises
-  console.log(course.parts)
+//  const sum = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises + course.parts[3].exercises
+  const sum = course.parts.reduce((sum, part) => {
+    return sum + part.exercises
+  }, 0)
   return(
     <b>total of {sum} exercises</b>
   ) 
@@ -46,12 +48,12 @@ const Part = ({part}) => {
 
 const Content = () => {
   return (
-    <div>
+    <>
       <Part part={course.parts[0]} />
       <Part part={course.parts[1]} />
       <Part part={course.parts[2]} />
       <Part part={course.parts[3]} />
-    </div>
+    </>
   )
 }
 
