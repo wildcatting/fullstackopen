@@ -11,36 +11,35 @@ This repo contains my submissions to the 2021 course exercises.
 
 ## Course Progress
 
-| Part      | Exercises  |
+| part      | status     |
 | --------- | ---------- |
-| 0         | 6/6        |
-| 1         | 14/14      |
-| 2         | 0/20       |
-| 3         | 0/22       |
-| 4         | 0/22       |
-| 5         | 0/22       |
-| 6         | 0/21       |
-| 7         | 0/21       |
-| 8         | 0/26       |
-| 9         | 0/27       |
-| 10        | 0/27       |
-| **Total** | **20/228** |
+| 0         | ✔️        |
+| 1         | ✔️        |
+| 2         | 🛠️        |
+| 3         | -          |
+| 4         | -          |
+| 5         | -          |
+| 6         | -          |
+| 7         | -          |
+| 8         | -          |
+| 9         | -          |
+| 10        | -          |
 
 ## Table of Contents
 
-### [Part 0: Fundamentals of Web apps](https://fullstackopen.com/en/part0)
+### Part 0: Fundamentals of Web apps
 
 - [General info](https://fullstackopen.com/en/part0/general_info)
 - [Fundamentals of Web apps](https://fullstackopen.com/en/part0/fundamentals_of_web_apps)
 
-### [Part 1: Introduction to React](https://fullstackopen.com/en/part1)
+### Part 1: Introduction to React
 
 - [Introduction to React](https://fullstackopen.com/en/part1/introduction_to_react)
 - [Javascript](https://fullstackopen.com/en/part1/java_script)
 - [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)
 - [A more complex state, debugging React apps](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps)
 
-### [Part 2: Communicating with server](https://fullstackopen.com/en/part2)
+### Part 2: Communicating with server
 
 - [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
 - Forms
