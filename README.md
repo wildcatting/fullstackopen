@@ -40,9 +40,9 @@ This repo contains my submissions to the 2021 course exercises.
 - [Component state, event handlers](https://fullstackopen.com/en/part1/component_state_event_handlers)
 - [A more complex state, debugging React apps](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps)
 
-### Part 2: Communicating with server
+### [Part 2: Communicating with server](https://fullstackopen.com/en/part2)
 
-- Rendering a collection, modules
+- [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
 - Forms
 - Getting data from server
 - Altering data in server
