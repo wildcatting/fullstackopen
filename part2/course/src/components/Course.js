@@ -1,53 +1,50 @@
 import React from 'react'
 
-const Header = ({course}) => {
-  return (
-    <h1>
-      {course.name}
-    </h1>
-  )
-}
+const Title = () =>
+  <h2>
+    Web development curriculum
+  </h2>
+
+const Header = ({children}) => 
+  <h3>{children}</h3>
 
 const Total = ({course}) => {
-  const sum = course.parts.reduce((sum, part) => {
-  console.log("what is happnn", sum, part)
-
-    return sum + part.exercises
-  }, 0)
-  console.log("lol", sum)
+  const sum = course[0].parts.map(course => course.exercises)
 
   return(
     <b>
-      total of {sum} exercises
+      total of {sum.reduce((s, p) => s + p)} exercises
     </b>
   ) 
 }
 
-const Part = ({part}) => {
-  return (
+const Part = ({part}) =>
     <p>
       {part.name} {part.exercises}
-    </p>    
-  )
-}
+    </p>
 
 const Content = ({course}) => {
   return (
     <>
-      <Part part={course.parts[0]} />
-      <Part part={course.parts[1]} />
-      <Part part={course.parts[2]} />
-      <Part part={course.parts[3]} />
+      <Part part={course[0].parts[0]} />
+      <Part part={course[0].parts[1]} />
+      <Part part={course[0].parts[2]} />
+      <Part part={course[0].parts[3]} />
     </>
   )
 }
 
 const Course = ({course}) => {
+  console.log({course})  
+
   return (
     <>
-      <Header course={course} />
+      <Title />
+      <Header>{course[0].name}</Header>
       <Content course={course} />
       <Total course={course} />
+      <Header>{course[1].name}</Header>
+
     </>
   )
 }
