@@ -1,14 +1,12 @@
 import React from 'react'
 
-const Title = () =>
-  <h2>
-    Web development curriculum
-  </h2>
+const Title = () => <h2>Web development
+    curriculum</h2>
 
 const Header = ({children}) => 
   <h3>{children}</h3>
 
-const Total = ({course}) => {
+    const Total = ({course}) => {
   const sum = course[0].parts.map(course => course.exercises)
 
   return(
