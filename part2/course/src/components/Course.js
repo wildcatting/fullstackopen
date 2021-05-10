@@ -1,35 +1,29 @@
 import React from 'react'
 
-const Title = () =>
-  <h2>
-    Web development curriculum
-  </h2>
-
-const Header = ({children}) => 
-  <h3>{children}</h3>
+const Part = ({part}) =>
+  <p>
+    {part.name} {part.exercises}
+  </p>
 
 const Total = ({course}) => {
-  const sum = course[0].parts.map(course => course.exercises)
-
+  const sum = course.parts.reduce((s, p) =>  s + p.exercises, 0)
   return(
     <b>
-      total of {sum.reduce((s, p) => s + p)} exercises
+      total of {sum} exercises
     </b>
   ) 
 }
 
-const Part = ({part}) =>
-    <p>
-      {part.name} {part.exercises}
-    </p>
-
 const Content = ({course}) => {
   return (
     <>
-      <Part part={course[0].parts[0]} />
-      <Part part={course[0].parts[1]} />
-      <Part part={course[0].parts[2]} />
-      <Part part={course[0].parts[3]} />
+      <h3>{course.name}</h3>
+      <div>
+        {course.parts.map(parts => 
+          <Part key={parts.id} part={parts} />
+        )}
+      </div>
+      <Total key={course.id} course={course} />
     </>
   )
 }
@@ -39,12 +33,12 @@ const Course = ({course}) => {
 
   return (
     <>
-      <Title />
-      <Header>{course[0].name}</Header>
-      <Content course={course} />
-      <Total course={course} />
-      <Header>{course[1].name}</Header>
-
+      <h2>Web development curriculum</h2>
+      <div>
+        {course.map(course => 
+          <Content key={course.id} course={course} />
+        )}
+      </div>  
     </>
   )
 }
