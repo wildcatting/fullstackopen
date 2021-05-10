@@ -42,7 +42,7 @@ This repo contains my submissions to the 2021 course exercises.
 ### Part 2: Communicating with server
 
 - [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
-- Forms
+- [Forms](https://fullstackopen.com/en/part2/forms)
 - Getting data from server
 - Altering data in server
 - Adding styles to React app
