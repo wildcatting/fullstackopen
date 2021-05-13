@@ -1,55 +1,48 @@
 import React, { useState } from 'react'
 import Note from './components/Note'
 
-const App = (props) => {
-  const [persons, setPersons] = useState(props.persons)
-  const [newPerson, setNewPerson] = useState('')
-  const [showAll, setShowAll] = useState(true)
+const App = () => {
+  const [persons, setPersons] = useState([])
+  const [newName, setNewName] = useState('')
 
-  const [ newName, setNewName ] = useState('Arto')
-
-  const addNote = (event) => {
+  const addPerson = (event) => {
     event.preventDefault()
+    
     const personObject = {
-      name: newPerson,
+      name: newName,
       id: persons.length + 1,
     }
   
     setPersons(persons.concat(personObject))
-    setNewPerson('')
+    setNewName('')
   }
 
-  const handleNoteChange = (event) => {
+  const handleAddPerson = (event) => {
     console.log(event.target.value)
-    setNewPerson(event.target.value)
+    setNewName(event.target.value)
   }
-
-  const notesToShow = showAll
-  ? persons
-  : persons.filter(persons => persons.important)
-
 
   console.log('persons', persons)
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <form onSubmit={addNote}>
+      <form onSubmit={addPerson}>
         <div>
-          name: <input 
-            value={newPerson}
-            onChange={handleNoteChange}
+          name: <input
+            value={newName}
+            onChange={handleAddPerson}
           />
         </div>
         <button type="submit">add</button>
       </form>   
 
       <h2>Numbers</h2>
-      <p>
-        {notesToShow.map(note =>
+      <div>
+        {persons.map(note =>
           <Note key={note.id} note={note} />
         )}
-      </p> 
+      </div> 
     </div>
   )
 }
