@@ -7,14 +7,23 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    
+
     const personObject = {
       name: newName,
       id: persons.length + 1,
     }
-  
-    setPersons(persons.concat(personObject))
-    setNewName('')
+
+    if (personObject.name === persons.name) {
+      return (
+        <div>
+          debug: {newName}
+        </div>
+      )
+    } 
+    return (
+      setPersons(persons.concat(personObject)),
+      setNewName('')
+    )
   }
 
   const handleAddPerson = (event) => {
