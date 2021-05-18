@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
-import Note from './components/Note'
+import Person from './components/Person'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
-
-  const newPerson = {
-    name: newName,
-    id: persons.length + 1,
-  }
+  const [newNumber, setNewNumber] = useState('')
 
   const addPerson = (event) => {
+    const newPerson = {
+      name: newName,
+      number: newNumber,
+      id: persons.length + 1,
+    }
+
     event.preventDefault()
 
-    if (persons != 0) {
-      persons.forEach(function(item, index, array) {
-        console.log('loop thru persons', item, index, array)
+    if (persons > 0) {
+      persons.forEach(function(index) {
         if (persons[index].name === newName) {
           alert(
             `${newName} is already added to phonebook`
@@ -26,18 +27,15 @@ const App = () => {
         return (
           setPersons(persons.concat(newPerson)),
           setNewName(''),
+          setNewNumber(''),
           newPerson.id = persons.length
         )
       })
-      return (
-        event.preventDefault(),
-        setNewName(''),
-        newPerson.id = persons.length
-      )
     } 
     return (
       setPersons(persons.concat(newPerson)),
       setNewName(''),
+      setNewNumber(''),
       newPerson.id = persons.length
     )
   }
@@ -47,9 +45,13 @@ const App = () => {
     setNewName(event.target.value)
   }
 
+  const handleAddNumber = (event) => {
+    console.log(event.target.value)
+    setNewNumber(event.target.value)
+  }
+
   console.log('persons', persons)
   console.log('newName', newName)
-  console.log('newPerson', newPerson)
 
   return (
     <div>
@@ -61,16 +63,21 @@ const App = () => {
             onChange={handleAddPerson}
           />
         </div>
+        <div>
+          number: <input 
+            value={newNumber}
+            onChange={handleAddNumber}
+          />
+        </div>
         <button type="submit">add</button>
-      </form>   
+      </form>
 
       <h2>Numbers</h2>
       <div>
-        {persons.map(note =>
-          <Note key={note.id} note={note} />
+        {persons.map(person =>
+          <Person key={person.id} person={person} />
         )}
       </div> 
-      <div>debug: {newName}</div>
     </div>
   )
 }
