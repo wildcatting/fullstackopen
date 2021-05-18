@@ -5,23 +5,34 @@ const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
 
+  const newPerson = {
+    name: newName,
+    id: persons.length + 1,
+  }
+
   const addPerson = (event) => {
     event.preventDefault()
 
-    const personObject = {
-      name: newName,
-      id: persons.length + 1,
-    }
-
-    if (personObject.name === persons.name) {
+    if (persons != 0) {
+      persons.forEach(function(item, index, array) {
+        console.log('loop thru persons', item, index, array)
+        if (persons[index].name === newName) {
+          alert(
+            `${newName} is already added to phonebook`
+          )
+        }
+        return (
+          setPersons(persons.concat(newPerson)),
+          setNewName('')
+        )
+      })
       return (
-        <div>
-          debug: {newName}
-        </div>
+        event.preventDefault(),
+        setNewName('')
       )
     } 
     return (
-      setPersons(persons.concat(personObject)),
+      setPersons(persons.concat(newPerson)),
       setNewName('')
     )
   }
@@ -32,6 +43,8 @@ const App = () => {
   }
 
   console.log('persons', persons)
+  console.log('newName', newName)
+  console.log('newPerson', newPerson)
 
   return (
     <div>
@@ -52,6 +65,7 @@ const App = () => {
           <Note key={note.id} note={note} />
         )}
       </div> 
+      <div>debug: {newName}</div>
     </div>
   )
 }
