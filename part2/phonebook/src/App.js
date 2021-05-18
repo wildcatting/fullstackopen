@@ -20,20 +20,25 @@ const App = () => {
           alert(
             `${newName} is already added to phonebook`
           )
+          persons.pop()
+          newPerson.id = persons.length
         }
         return (
           setPersons(persons.concat(newPerson)),
-          setNewName('')
+          setNewName(''),
+          newPerson.id = persons.length
         )
       })
       return (
         event.preventDefault(),
-        setNewName('')
+        setNewName(''),
+        newPerson.id = persons.length
       )
     } 
     return (
       setPersons(persons.concat(newPerson)),
-      setNewName('')
+      setNewName(''),
+      newPerson.id = persons.length
     )
   }
 
