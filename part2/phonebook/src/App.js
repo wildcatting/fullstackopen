@@ -3,15 +3,14 @@ import Person from './components/Person'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Jun', number: '505-459-4511', id: 0 },
-    { name: 'Syd', number: '505-289-7995', id: 1 },
-    { name: 'Hrob', number: '505-414-5277', id: 2 },
-    { name: 'Matt', number: '360-631-4272', id: 3 }
+    { name: 'Jun Sung', number: '505-459-4511', id: 0 },
+    { name: 'Sydney', number: '505-289-7995', id: 1 },
+    { name: 'Jun-Min', number: '505-414-5277', id: 2 },
+    { name: 'Matthew', number: '360-631-4272', id: 3 }
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [showAll, setShowAll] = useState(true)
-
+  const [filter, setFilter] = useState('')
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -22,41 +21,27 @@ const App = () => {
       id: persons.length
     }
 
-    let duplicate = false
-
-    function included() {
-      for (let i = 0; i < persons.length; i++) {
-        if (persons[i].name === newName) {
-          return (
-            duplicate = true
-          )
-        }
-      }
-    }
-    included()
-
-    duplicate
+    persons.some((person) => person.name === newName)
     ? alert(`${newName} is already added to phonebook`)
     : setPersons(persons.concat(newPerson))
-
-    console.log('newPerson', newPerson)
 
     setNewName('')
     setNewNumber('')
   }
 
-  const personsToShow = showAll
-  ? persons
-  : persons.filter(person => person.filtered)
-
-  console.log('phonebook', persons)  
+  const personsToShow = 
+    filter === ''
+    ? persons
+    : persons.filter((person) =>
+        person.name.toLowerCase().includes(filter.toLowerCase())
+      )
 
   return (
     <>
       <h2>Phonebook</h2>
       <div>
         filter shown with: <input 
-          
+          onChange={({target}) => setFilter(target.value)}
         />
       </div>
       <form onSubmit={addPerson}>
