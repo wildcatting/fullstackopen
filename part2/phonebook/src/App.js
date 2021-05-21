@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Filter from './components/Filter'
-import Form from './components/Form'
+import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 
 const App = () => {
@@ -36,23 +36,14 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input
-            value={newName}
-            onChange={({target}) => setNewName(target.value)}
-          />
-        </div>
-        <div>
-          number: <input 
-            value={newNumber}
-            onChange={({target}) => setNewNumber(target.value)}
-          />
-        </div>
-        <button type="submit">add</button>
-      </form>
-{/*       <Form />
- */}      <h3>Numbers</h3>
+      <PersonForm 
+        addPerson={addPerson} 
+        newName={newName} 
+        setNewName={setNewName} 
+        newNumber={newNumber}
+        setNewNumber={setNewNumber}
+      />
+      <h3>Numbers</h3>
       <Persons filter={filter} persons={persons} />
     </>
   )

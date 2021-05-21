@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Form = ({addPerson, newName, setNewName, newNumber, setNewNumber}) => 
+const PersonForm = ({addPerson, newName, setNewName, newNumber, setNewNumber}) =>
   <form onSubmit={addPerson}>
     <div>
       name: <input
@@ -17,4 +17,4 @@ const Form = ({addPerson, newName, setNewName, newNumber, setNewNumber}) =>
     <button type="submit">add</button>
   </form>
 
-export default Form
+export default PersonForm
