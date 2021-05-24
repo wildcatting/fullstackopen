@@ -4,10 +4,10 @@ import Person from './Person'
 const Persons = ({filter, persons}) => {
   const personsToShow = 
   filter === ''
-  ? persons
-  : persons.filter((person) =>
-      person.name.toLowerCase().includes(filter.toLowerCase())
-    )
+    ? persons
+    : persons.filter((person) =>
+        person.name.toLowerCase().includes(filter.toLowerCase())
+      )
 
   return (
     <>
