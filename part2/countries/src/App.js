@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Countries from './components/Countries'
+import DisplayCountries from './components/DisplayCountries'
 
 const App = () => {
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState('')
+  const [show, setShow] = useState(true)
 
   useEffect(() => {
     console.log('effect')
@@ -17,6 +18,10 @@ const App = () => {
   }, [])
   console.log('render', countries.length, 'countries')
   
+  const handleClick = (event) => {
+    setFilter(event.target.id);
+  };
+
   return (
     <>
       <div>
@@ -24,7 +29,13 @@ const App = () => {
           onChange={({target}) => setFilter(target.value)}
         />
       </div>
-      <Countries countries={countries} filter={filter} />
+      <DisplayCountries 
+        countries={countries} 
+        filter={filter} 
+        show={show} 
+        setShow={setShow} 
+        handleClick={(event) => handleClick(event)}
+      />
     </>
   )
 }

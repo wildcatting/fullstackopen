@@ -1,19 +1,22 @@
 import React from 'react'
+import CountryView from './CountryView'
 
-const Country = ({country, length}) =>
-  length === 1
-    ? <>
-        <h2>{country.name}</h2>
-        <p>capital: {country.capital}</p>
-        <p>population: {country.population}</p>
-        <h3>languages: </h3>
-        <ul>
-          {country.languages.map((lang, i) => (
-            <li key={i}>{lang.name}</li>
-          ))}
-        </ul>
-        <img src={country.flag} width="200" alt={`Flag of ${country.name}`} />
-      </>
-    : <p>{country.name}</p>
+const Country = ({country, length, show, setShow, handleClick}) => {
+  const clickToShow = show
+  ? <div key={country.name}>
+      {country.name}
+      <button onClick={handleClick} id={country.name}>
+        show
+      </button>
+      <br />
+    </div>
+  : <CountryView country={country} id={country.name} />
+
+  return (
+    length === 1
+      ? <CountryView country={country} />
+      : clickToShow
+  )
+}
 
 export default Country
