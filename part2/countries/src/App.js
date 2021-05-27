@@ -18,9 +18,8 @@ const App = () => {
   }, [])
   console.log('render', countries.length, 'countries')
   
-  const handleClick = (event) => {
-    setFilter(event.target.id);
-  };
+  const handleClick = (event) =>
+    setFilter(event.target.id)
 
   return (
     <>
