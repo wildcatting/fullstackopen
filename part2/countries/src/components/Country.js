@@ -1,7 +1,9 @@
 import React from 'react'
 import CountryView from './CountryView'
 
-const Country = ({country, length, show, setShow, handleClick}) => {
+const Country = ({country, length, handleClick, weather, setCapital}) => {
+  let show = true
+
   const clickToShow = show
   ? <div key={country.name}>
       {country.name}
@@ -10,11 +12,20 @@ const Country = ({country, length, show, setShow, handleClick}) => {
       </button>
       <br />
     </div>
-  : <CountryView country={country} id={country.name} />
+  : <CountryView 
+      country={country}
+      weather={weather}
+      setCapital={setCapital}
+      id={country.name} 
+    />
 
   return (
     length === 1
-      ? <CountryView country={country} />
+      ? <CountryView 
+          country={country}
+          weather={weather}
+          setCapital={setCapital}
+        />
       : clickToShow
   )
 }
