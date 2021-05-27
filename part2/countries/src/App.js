@@ -5,7 +5,10 @@ import DisplayCountries from './components/DisplayCountries'
 const App = () => {
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState('')
-  const [show, setShow] = useState(true)
+  const [capital, setCapital] = useState('')
+  const [weather, setWeather] = useState('')
+
+  const api_key = process.env.REACT_APP_API_KEY
 
   useEffect(() => {
     console.log('effect')
@@ -15,11 +18,23 @@ const App = () => {
         console.log('promise fulfilled')
         setCountries(response.data)
       })
-  }, [])
-  console.log('render', countries.length, 'countries')
-  
-  const handleClick = (event) =>
+    console.log('effect redux')
+    axios
+    .get(`http://api.weatherstack.com/current?access_key=${api_key}&query=${capital}`)
+    .then(response => {
+      console.log('promise fulfilled')
+      setWeather(response.data)
+    })
+  }, [api_key, capital])
+
+  console.log('rendering', countries.length, 'countries')
+  console.log('weather', weather)
+
+  const handleClick = (event) => {
+    console.log('click', event.target.id)
     setFilter(event.target.id)
+    console.log('filter =', filter)
+  }
 
   return (
     <>
@@ -31,9 +46,9 @@ const App = () => {
       <DisplayCountries 
         countries={countries} 
         filter={filter} 
-        show={show} 
-        setShow={setShow} 
         handleClick={(event) => handleClick(event)}
+        weather={weather}
+        setCapital={setCapital}
       />
     </>
   )

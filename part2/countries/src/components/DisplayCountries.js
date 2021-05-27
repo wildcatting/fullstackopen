@@ -1,7 +1,7 @@
 import React from 'react'
 import Country from './Country'
 
-const DisplayCountries = ({filter, countries, show, setShow, handleClick}) => {
+const DisplayCountries = ({filter, countries, handleClick, weather, setCapital}) => {
   const countriesToShow = 
   filter === ''
     ? countries.filter(country => country.name === '')
@@ -19,9 +19,9 @@ const DisplayCountries = ({filter, countries, show, setShow, handleClick}) => {
               key={country.name} 
               country={country} 
               length={countriesToShow.length} 
-              show={show} 
-              setShow={setShow} 
               handleClick={handleClick}
+              weather={weather}
+              setCapital={setCapital}
             />
       )}
     </>
