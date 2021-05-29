@@ -21,25 +21,16 @@ const Country = ({country, length, handleClick}) => {
   let show = true
 
   const clickToShow = show
-  ? <div key={country.name}>
-      {country.name}
-      <button onClick={handleClick} id={country.name}>
-        show
-      </button>
-      <br />
-    </div>
-  : <CountryView 
-      country={country}
-      weather={weather}
-      id={country.name} 
-    />
+    ? <div key={country.name}>
+        {country.name}
+        <button onClick={handleClick} id={country.name}>show</button>
+        <br />
+      </div>
+    : <CountryView country={country} weather={weather} id={country.name} />
 
   return (
     length === 1
-      ? <CountryView 
-          country={country}
-          weather={weather}
-        />
+      ? <CountryView country={country} weather={weather} />
       : clickToShow
   )
 }
