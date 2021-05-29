@@ -14,10 +14,7 @@ const App = () => {
           onChange={({target}) => setFilter(target.value)}
         />
       </div>
-      <DisplayCountries 
-        filter={filter}
-        handleClick={(event) => handleClick(event)}
-      />
+      <DisplayCountries filter={filter} handleClick={(event) => handleClick(event)} />
     </>
   )
 }

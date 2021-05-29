@@ -29,12 +29,7 @@ const DisplayCountries = ({filter, handleClick}) => {
       {countriesToShow.length > 10
         ? 'Too many matches, specify another filter'
         : countriesToShow.map(country =>
-          <Country 
-            key={country.name} 
-            country={country} 
-            length={countriesToShow.length} 
-            handleClick={handleClick}
-          />
+          <Country key={country.name} country={country} length={countriesToShow.length} handleClick={handleClick} />
       )}
     </>
   )
