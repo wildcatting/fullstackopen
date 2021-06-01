@@ -44,7 +44,7 @@ This repo contains my submissions to the 2021 course exercises.
 - [Rendering a collection, modules](https://fullstackopen.com/en/part2/rendering_a_collection_modules)
 - [Forms](https://fullstackopen.com/en/part2/forms)
 - [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
-- Altering data in server
+- [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
 - Adding styles to React app
 
 ### Part 3: Programming a server with NodeJS and Express
