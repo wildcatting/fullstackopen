@@ -16,6 +16,11 @@ const update = (id, newObject) => {
   return request.then(response => response.data)
 }
 
-const phoneService = { getAll, create, update }
+const deleteEntry = id => {
+  const request = axios.delete(`${baseUrl}/${id}`)
+  return request.then(response => response.data)
+}
+
+const phoneService = { getAll, create, update, deleteEntry }
 
 export default phoneService
