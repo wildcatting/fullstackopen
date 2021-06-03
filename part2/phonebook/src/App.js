@@ -27,15 +27,24 @@ const App = () => {
       number: newNumber,
     }
 
-    persons.some((person) => person.name === newName)
-      ? alert(`${newName} is already added to phonebook`)
-      : phoneService
+    if (persons.some((person) => person.name === newName)) {
+      if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`))
+        phoneService
+          .update(newPerson)
+          .then(returnedPerson => {
+            setPersons(persons.concat(returnedPerson))
+            setNewName('')
+            setNewNumber('')
+          })
+      } else {
+        phoneService
           .create(newPerson)
           .then(returnedPerson => {
             setPersons(persons.concat(returnedPerson))
             setNewName('')
             setNewNumber('')
           })
+      }
     }
 
     const deletePerson = (id) => {
