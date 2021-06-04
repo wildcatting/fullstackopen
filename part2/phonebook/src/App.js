@@ -11,6 +11,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
+  const [color, setColor] = useState('')
 
   useEffect(() => {
     console.log('effect')
@@ -38,11 +39,13 @@ const App = () => {
           .then(returnedPerson => {
             setPersons(persons.map((person) => person.id !== returnedPerson.id ? person : returnedPerson))
             setErrorMessage(`${existingEntry.name}'s number was updated`)
+            setColor('green')
             setNewName('')
             setNewNumber('')
           })
           .catch(error => {
-            setErrorMessage(`${existingEntry.name} could not be updated`)
+            setErrorMessage(`${existingEntry.name}'s information has already been removed from server`)
+            setColor('red')
             setPersons(persons.filter(p => p.id !== existingEntry.id))
           })
         setTimeout(() => {
@@ -54,6 +57,7 @@ const App = () => {
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
           setErrorMessage(`Added ${newPerson.name}`)
+          setColor('green')
           setNewName('')
           setNewNumber('')
         })
@@ -67,30 +71,25 @@ const App = () => {
     }
   }
 
-    const deletePerson = (id) => {
-      const person = persons.find(p => p.id === id)
-      
-      if (window.confirm(`Delete ${person.name}?`))
-      phoneService
-        .deleteEntry(id)
-        .then(() => {
-          phoneService
-            .getAll()
-            .then(persons => {
-              setPersons(persons)
-            })
-        })
-        .catch(error => {
-          alert(
-            `${person.name}' was already deleted from server`
-          )
-        })
-    }
+  const deletePerson = (id) => {
+    const person = persons.find(p => p.id === id)
+    
+    if (window.confirm(`Delete ${person.name}?`))
+    phoneService
+      .deleteEntry(id)
+      .then(() => {
+        phoneService
+          .getAll()
+          .then(persons => {
+            setPersons(persons)
+          })
+      })
+  }
 
   return (
     <>
       <h2>Phonebook</h2>
-      <Notification message={errorMessage} />
+      <Notification message={errorMessage} result={color} />
       <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
       <PersonForm 
