@@ -15,8 +15,8 @@ This repo contains my submissions to the 2021 course exercises.
 | ---- | ------ |
 | 0    | ✔️     |
 | 1    | ✔️     |
-| 2    | 🛠️     |
-| 3    | -      |
+| 2    | ✔️     |
+| 3    | 🛠️     |
 | 4    | -      |
 | 5    | -      |
 | 6    | -      |
