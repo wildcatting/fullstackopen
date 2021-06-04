@@ -105,3 +105,11 @@ This repo contains my submissions to the 2021 course exercises.
 - React Native basics
 - Communicating with server
 - Testing and extending our application
+
+### Part 11: CI/CD
+
+- Introduction to CI/CD
+- Getting started with GitHub Actions
+- Deployment
+- Keeping green
+- Expanding Further
