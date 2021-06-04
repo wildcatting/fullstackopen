@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Notification = ({ message, result }) => {
+const Notification = ({message, result}) => {
   const notificationStyle = {
     color: result,
     background: 'lightgrey',
