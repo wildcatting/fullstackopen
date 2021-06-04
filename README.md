@@ -11,19 +11,19 @@ This repo contains my submissions to the 2021 course exercises.
 
 ## Course Progress
 
-| part      | status     |
-| --------- | ---------- |
-| 0         | ✔️        |
-| 1         | ✔️        |
-| 2         | 🛠️        |
-| 3         | -          |
-| 4         | -          |
-| 5         | -          |
-| 6         | -          |
-| 7         | -          |
-| 8         | -          |
-| 9         | -          |
-| 10        | -          |
+| part | status |
+| ---- | ------ |
+| 0    | ✔️     |
+| 1    | ✔️     |
+| 2    | 🛠️     |
+| 3    | -      |
+| 4    | -      |
+| 5    | -      |
+| 6    | -      |
+| 7    | -      |
+| 8    | -      |
+| 9    | -      |
+| 10   | -      |
 
 ## Table of Contents
 
@@ -45,7 +45,7 @@ This repo contains my submissions to the 2021 course exercises.
 - [Forms](https://fullstackopen.com/en/part2/forms)
 - [Getting data from server](https://fullstackopen.com/en/part2/getting_data_from_server)
 - [Altering data in server](https://fullstackopen.com/en/part2/altering_data_in_server)
-- Adding styles to React app
+- [Adding styles to React app](https://fullstackopen.com/en/part2/adding_styles_to_react_app)
 
 ### Part 3: Programming a server with NodeJS and Express
 
