@@ -3,12 +3,14 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import phoneService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     console.log('effect')
@@ -35,23 +37,33 @@ const App = () => {
           .update(existingEntry.id, newPerson)
           .then(returnedPerson => {
             setPersons(persons.map((person) => person.id !== returnedPerson.id ? person : returnedPerson))
+            setErrorMessage(`${existingEntry.name}'s number was updated`)
             setNewName('')
             setNewNumber('')
           })
           .catch(error => {
-            alert(
-              `${existingEntry.name}' was already deleted from server`
-            )
+            setErrorMessage(`${existingEntry.name} could not be updated`)
             setPersons(persons.filter(p => p.id !== existingEntry.id))
           })
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 3000);
     } else {
       phoneService
         .create(newPerson)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
+          setErrorMessage(`Added ${newPerson.name}`)
           setNewName('')
           setNewNumber('')
         })
+        .catch(error => {
+          setErrorMessage(`${error.response.data.error}`);
+          console.log(error.response.data);
+        });
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
     }
   }
 
@@ -78,6 +90,7 @@ const App = () => {
   return (
     <>
       <h2>Phonebook</h2>
+      <Notification message={errorMessage} />
       <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
       <PersonForm 
