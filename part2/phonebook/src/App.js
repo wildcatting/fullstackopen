@@ -27,25 +27,33 @@ const App = () => {
       number: newNumber,
     }
 
-    if (persons.some((person) => person.name === newName)) {
+    const existingEntry = persons.find((person) => person.name === newName)
+
+    if (existingEntry) {
       if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`))
         phoneService
-          .update(newPerson)
+          .update(existingEntry.id, newPerson)
           .then(returnedPerson => {
-            setPersons(persons.concat(returnedPerson))
+            setPersons(persons.map((person) => person.id !== returnedPerson.id ? person : returnedPerson))
             setNewName('')
             setNewNumber('')
           })
-      } else {
-        phoneService
-          .create(newPerson)
-          .then(returnedPerson => {
-            setPersons(persons.concat(returnedPerson))
-            setNewName('')
-            setNewNumber('')
+          .catch(error => {
+            alert(
+              `${existingEntry.name}' was already deleted from server`
+            )
+            setPersons(persons.filter(p => p.id !== existingEntry.id))
           })
-      }
+    } else {
+      phoneService
+        .create(newPerson)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
     }
+  }
 
     const deletePerson = (id) => {
       const person = persons.find(p => p.id === id)
