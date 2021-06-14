@@ -1,1 +1,10 @@
-GET  http://localhost:3001/api/persons
+GET http://localhost:3001/api/persons
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Jun Sung Lee",
+  "number": "505-459-4511"
+}
