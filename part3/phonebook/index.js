@@ -5,7 +5,7 @@ const app = express()
 app.use(express.json())
 app.use(morgan("tiny"));
 
-morgan.token("body", req => JSON.stringify(req.body));
+morgan.token("body", request => JSON.stringify(request.body));
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
