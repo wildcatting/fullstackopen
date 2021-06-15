@@ -51,7 +51,7 @@ This repo contains my submissions to the 2021 course exercises.
 ### Part 3: Programming a server with NodeJS and Express
 
 - [Node.js and Express](https://fullstackopen.com/en/part3/node_js_and_express)
-- Deploying app to internet
+- [Deploying app to internet](https://fullstackopen.com/en/part3/deploying_app_to_internet)
 - Saving data to MongoDB
 - Validation and ESLint
 
