@@ -52,7 +52,7 @@ This repo contains my submissions to the 2021 course exercises.
 
 - [Node.js and Express](https://fullstackopen.com/en/part3/node_js_and_express)
 - [Deploying app to internet](https://fullstackopen.com/en/part3/deploying_app_to_internet)
-- Saving data to MongoDB
+- [Saving data to MongoDB](https://fullstackopen.com/en/part3/saving_data_to_mongo_db)
 - Validation and ESLint
 
 ### Part 4: Testing Express servers, user administration
