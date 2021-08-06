@@ -23,10 +23,13 @@ const requestLogger = (request, response, next) => {
 app.use(requestLogger)
 
 app.get('/info', (request, response) => {
-  response.send(`
+  Person.find({}).then(persons => {
+    persons.map(person => person.toJSON());
+    response.send(`
       <p>Phonebook has info for ${persons.length} people</p>
       <p>${Date()}</p>
-  `)
+    `)
+  })
 })
 
 app.get('/api/persons', (request, response) => {
@@ -37,7 +40,7 @@ app.get('/api/persons', (request, response) => {
 
 app.get('/api/persons/:id', (request, response) => {
   Person.findById(request.params.id).then(person => {
-    response.json(person.toJSON())
+    response.json(person)
   })
 })
 
