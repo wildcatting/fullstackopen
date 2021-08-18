@@ -34,7 +34,7 @@ app.use(requestLogger)
 
 app.get('/info', (request, response) => {
   Person.find({}).then(persons => {
-    persons.map(person => person.toJSON());
+    persons.map(person);
     response.send(`
       <p>Phonebook has info for ${persons.length} people</p>
       <p>${Date()}</p>
@@ -68,7 +68,7 @@ app.delete('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
   const body = request.body
 
   if (!body.name || !body.number) {
@@ -77,11 +77,11 @@ app.post('/api/persons', (request, response) => {
     })
   }
 
-  if (persons.find((person) => person.name === body.name)) {
+/*   if (persons.find((person) => person.name === body.name)) {
     return response.status(400).json({
       error: "name must be unique"
     })
-  }
+  } */
 
   const person = new Person ({
     name: body.name,
@@ -89,9 +89,10 @@ app.post('/api/persons', (request, response) => {
     id: Math.floor(Math.random() * 100000)
   })
 
-  person.save().then(savedPerson => {
-    response.json(savedPerson)
-  })
+  person.save()
+    .then(savedPerson => response.json(savedPerson))
+    .then(savedAndFormattedPerson => response.json(savedAndFormattedPerson))
+    .catch(error => response.status(400).json({ error: "name must be unique" }))
 })
 
 const unknownEndpoint = (request, response) => {
