@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')
 const morgan = require('morgan')
 const Person = require('./models/person')
+const { response } = require('express')
 
 app.use(express.static('build'))
 app.use(express.json())
@@ -33,19 +34,19 @@ const requestLogger = (request, response, next) => {
 app.use(requestLogger)
 
 app.get('/info', (request, response) => {
-  Person.find({}).then(persons => {
-    persons.map(person);
-    response.send(`
-      <p>Phonebook has info for ${persons.length} people</p>
-      <p>${Date()}</p>
-    `)
-  })
+  Person.find({})
+    .then(persons => {
+      persons.map(person);
+      response.send(`
+        <p>Phonebook has info for ${persons.length} people</p>
+        <p>${Date()}</p>
+      `)
+    })
 })
 
 app.get('/api/persons', (request, response) => {
-  Person.find({}).then(persons => {
-    response.json(persons)
-  })
+  Person.find({})
+    .then(persons => response.json(persons))
 })
 
 app.get('/api/persons/:id', (request, response) => {
@@ -62,9 +63,7 @@ app.get('/api/persons/:id', (request, response) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndRemove(request.params.id)
-    .then(result => {
-      response.status(204).end()
-    })
+    .then(result => response.status(204).end())
     .catch(error => next(error))
 })
 
@@ -73,15 +72,9 @@ app.post('/api/persons', (request, response, next) => {
 
   if (!body.name || !body.number) {
     return response.status(400).json({
-      error: "name or number missing"
+      error: 'name or number missing'
     })
   }
-
-/*   if (persons.find((person) => person.name === body.name)) {
-    return response.status(400).json({
-      error: "name must be unique"
-    })
-  } */
 
   const person = new Person ({
     name: body.name,
@@ -92,12 +85,25 @@ app.post('/api/persons', (request, response, next) => {
   person.save()
     .then(savedPerson => response.json(savedPerson))
     .then(savedAndFormattedPerson => response.json(savedAndFormattedPerson))
-    .catch(error => response.status(400).json({ error: "name must be unique" }))
+    .catch(error => response.status(400).json({ error: 'name must be unique' }))
 })
 
-const unknownEndpoint = (request, response) => {
+app.put('/api/persons/:id', (request, response, next) => {
+  const body = request.body
+  
+  const person = {
+    name: body.name,
+    number: body.number
+  }
+  
+  Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    .then(updateNumber => response.json(updateNumber))
+    .catch(error => next(error))
+})
+
+const unknownEndpoint = (request, response) => 
   response.status(404).send({ error: 'unknown endpoint' })
-}
+
 
 app.use(unknownEndpoint)
 
