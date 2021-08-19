@@ -1,14 +1,14 @@
 GET http://localhost:3001/api/persons
 
 ###
-DELETE  http://localhost:3001/api/persons/60d63153ac52c1907ee7e76d
+DELETE  http://localhost:3001/api/persons/611edc174882802fde88e6dc
  
 
 ###
-POST http://localhost:3001/api/persons
+POST  http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Jun Sung Lee",
-  "number": "505-505-5050"
+  "name": "Jun Sung",
+  "number": "505-505-5055"
 }
