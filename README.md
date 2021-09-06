@@ -16,8 +16,8 @@ This repo contains my submissions to the 2021 course exercises.
 | 0    | ✔️     |
 | 1    | ✔️     |
 | 2    | ✔️     |
-| 3    | 🛠️     |
-| 4    | -      |
+| 3    | ✔️     |
+| 4    | 🛠️     |
 | 5    | -      |
 | 6    | -      |
 | 7    | -      |
@@ -57,7 +57,7 @@ This repo contains my submissions to the 2021 course exercises.
 
 ### Part 4: Testing Express servers, user administration
 
-- Structure of backend application, introduction to testing
+- [Structure of backend application, introduction to testing](https://fullstackopen.com/en/part4/structure_of_backend_application_introduction_to_testing)
 - Testing the backend
 - User administration
 - Token authentication
