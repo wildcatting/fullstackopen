@@ -1,0 +1,11 @@
+GET http://localhost:3001 
+
+###
+POST http://localhost:3001/
+Content-Type: application/json
+
+{
+    "title": "Jun's Stack",
+    "author": "Jun Sung Lee",
+    "url": "junsunglee.com"
+}
