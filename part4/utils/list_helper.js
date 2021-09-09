@@ -1,34 +1,39 @@
+// eslint-disable-next-line no-unused-vars
 const dummy = blogs => 1
 
-const totalLikes = blogs => blogs.reduce((a, b) => a + b.likes, 0)
+const totalLikes = blogs => blogs.reduce((sum, blog) => sum + blog.likes, 0)
 
-const favoriteBlog = blogs => blogs.reduce((a, b) =>
-  b.likes > a
-    ? b.likes
-    : a, blogs[0].likes)
+const favoriteBlog = blogs => blogs.reduce((maxLikes, blog) =>
+  blog.likes > maxLikes
+    ? blog.likes
+    : maxLikes, blogs[0].likes)
 
 const mostBlogs = blogs => {
-  const result = blogs.reduce((a, b) => {
-    let known = a.find(found => found.author === b.author)
+  let authorCounts = blogs.reduce((authorCount, blog) => {
+    authorCount[blog.author] = (authorCount[blog.author] || 0) + 1
+    return authorCount
+  }, {})
+  let maxCount = Math.max(...Object.values(authorCounts))
+  let mostFrequent = Object.keys(authorCounts).filter(author => authorCounts[author] === maxCount)
+  return {
+    author: mostFrequent[0],
+    blogs: maxCount
+  }
+}
 
-    if (!known) {
-      return a.concat({ author: b.author, blogs: 1 })
-    }
-
-    known.blogs++
-    return a
-  }, [])
-
-  return result.reduce((a, b) =>
-    a.blogs > b.blogs
-      ? a
-      : b
-  )
+const mostLikes = blogs => {
+  let likesCounts = blogs.reduce((likesCount, blog) => {
+    likesCount[blog.author] = (likesCount[blog.author] || 0) + blog.likes
+    return likesCount
+  }, {})
+  let maxCount = Math.max(...Object.values(likesCounts))
+  let mostLiked = Object.keys(likesCounts).filter(author => likesCounts[author] === maxCount)
+  return {
+    author: mostLiked[0],
+    likes: maxCount
+  }
 }
 
 module.exports = {
-  dummy,
-  totalLikes,
-  favoriteBlog,
-  mostBlogs
+  dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes
 }
