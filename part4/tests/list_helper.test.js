@@ -95,3 +95,12 @@ describe('favorite blog', () => {
     })
   })
 })
+
+describe('mostBlogs', () => {
+  test('return the author with most blogs', () => {
+    expect(listHelper.mostBlogs(blogs)).toEqual({
+      author: 'Robert C. Martin',
+      blogs: 3
+    })
+  })
+})
