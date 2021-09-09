@@ -96,11 +96,20 @@ describe('favorite blog', () => {
   })
 })
 
-describe('mostBlogs', () => {
+describe('most blogs', () => {
   test('return the author with most blogs', () => {
     expect(listHelper.mostBlogs(blogs)).toEqual({
       author: 'Robert C. Martin',
       blogs: 3
+    })
+  })
+})
+
+describe('most likes', () => {
+  test('return the author with most likes', () => {
+    expect(listHelper.mostLikes(blogs)).toEqual({
+      author: 'Edsger W. Dijkstra',
+      likes: 17
     })
   })
 })
