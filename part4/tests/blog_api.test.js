@@ -16,7 +16,7 @@ beforeEach(async () => {
   await blogObject.save()
 })
 
-test('blogs are returned as json', async () => {
+test('blogs returned as json', async () => {
   await api
     .get('/api/blogs')
     .expect(200)
@@ -26,7 +26,13 @@ test('blogs are returned as json', async () => {
 test('all blogs are returned', async () => {
   const response = await api.get('/api/blogs')
 
-  expect(response.body).toHaveLength(helper.initialBlogs.length)})
+  expect(response.body).toHaveLength(helper.initialBlogs.length)
+})
+
+test('unique default identifier of blog posts is _id', async () => {
+  const blogs = await Blog.find({})
+  expect(blogs[0]._id).toBeDefined()
+})
 
 test('a specific blog is within the returned blogs', async () => {
   const response = await api.get('/api/blogs')
