@@ -29,11 +29,6 @@ test('all blogs are returned', async () => {
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
 
-test('unique default identifier of blog posts is _id', async () => {
-  const blogs = await Blog.find({})
-  expect(blogs[0]._id).toBeDefined()
-})
-
 test('a specific blog is within the returned blogs', async () => {
   const response = await api.get('/api/blogs')
 
@@ -42,7 +37,12 @@ test('a specific blog is within the returned blogs', async () => {
   expect(titles).toContain('Thoughts and Ideas')
 })
 
-/* test('a valid blog can be added', async () => {
+test('unique default identifier of blog posts is _id', async () => {
+  const blogs = await Blog.find({})
+  expect(blogs[0]._id).toBeDefined()
+})
+
+test('a valid blog can be added', async () => {
   const newBlog = {
     title: 'Gilder\'s Daily Prophecy',
     author: 'George Gilder',
@@ -55,16 +55,16 @@ test('a specific blog is within the returned blogs', async () => {
     .expect(200)
     .expect('Content-Type', /application\/json/)
 
-  const blogsAtEnd = await helper.blogsInDb
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+  const blogsPostPost = await helper.blogsInDb()
+  expect(blogsPostPost).toHaveLength(helper.initialBlogs.length + 1)
 
-  const titles = blogsAtEnd.map(b => b.title)
+  const titles = blogsPostPost.map(b => b.title)
   expect(titles).toContain('Gilder\'s Daily Prophecy')
-}) */
+})
 
-/* test('blog without content is not added', async () => {
+/* test('blog without title is not added', async () => {
   const newBlog = {
-    important: false
+    author: 'Patrick Jones'
   }
 
   await api
@@ -72,8 +72,8 @@ test('a specific blog is within the returned blogs', async () => {
     .send(newBlog)
     .expect(400)
 
-  const blogsAtEnd = await helper.blogsInDb
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
+  const blogsPostPost = await helper.blogsInDb()
+  expect(blogsPostPost).toHaveLength(helper.initialBlogs.length)
 }) */
 
 afterAll(() => {
