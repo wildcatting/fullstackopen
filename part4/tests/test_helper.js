@@ -4,12 +4,12 @@ const initialBlogs = [
   {
     title: 'Jun\'s Stack',
     author: 'Jun Sung Lee',
-    url: 'junsunglee.com'
+    url: 'https://junsunglee.com'
   },
   {
     title: 'Thoughts and Ideas',
     author: 'Matthew C. Lind',
-    url: 'matthewclind.com'
+    url: 'http://matthewclind.com'
   },
 ]
 
