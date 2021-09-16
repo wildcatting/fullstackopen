@@ -97,10 +97,57 @@ describe('addition of a new blog', () => {
   })
 })
 
+describe('update a blog', () => {
+  test('blog update successful', async () => {
+    const newBlog = {
+      title:'The Grovestead',
+      author:'Rory Groves',
+      url:'https://thegrovestead.com',
+      likes:12
+    }
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(200)
+
+    const allBlogs = await helper.blogsInDb()
+    const blogToUpdate = allBlogs.find(blog => blog.title === newBlog.title)
+
+    const updatedBlog = {
+      ...blogToUpdate,
+      likes: blogToUpdate.likes + 1
+    }
+
+    await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(updatedBlog)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+
+    const foundBlog = blogsAtEnd.find(blog => blog.likes === 13)
+    expect(foundBlog.likes).toBe(13)
+  })
+})
+
 describe('deletion of a blog', () => {
   test('succeeds with status code 204 if id is valid', async () => {
-    const blogsAtStart = await helper.blogsInDb()
-    const blogToDelete = blogsAtStart[0]
+    const newBlog = {
+      title:'Man on the Margin',
+      author:'Michael Kendall',
+      url:'https://manonthemargin.com',
+    }
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(200)
+
+    const allBlogs = await helper.blogsInDb()
+    const blogToDelete = allBlogs.find(blog => blog.title === newBlog.title)
 
     await api
       .delete(`/api/blogs/${blogToDelete.id}`)
@@ -109,7 +156,7 @@ describe('deletion of a blog', () => {
     const blogsAtEnd = await helper.blogsInDb()
 
     expect(blogsAtEnd).toHaveLength(
-      helper.initialBlogs.length - 1
+      helper.initialBlogs.length
     )
 
     const titles = blogsAtEnd.map(b => b.title)
