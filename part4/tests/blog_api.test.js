@@ -25,7 +25,6 @@ test('blogs returned as json', async () => {
 
 test('all blogs are returned', async () => {
   const response = await api.get('/api/blogs')
-
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
 
@@ -33,7 +32,6 @@ test('a specific blog is within the returned blogs', async () => {
   const response = await api.get('/api/blogs')
 
   const titles = response.body.map(r => r.title)
-
   expect(titles).toContain('Thoughts and Ideas')
 })
 
@@ -80,6 +78,20 @@ test('if likes are missing, default likes to 0', async () => {
   expect(addedBlog.likes).toBe(0)
 })
 
+test('if title and url are missing, respond with 400 bad request', async () => {
+  const newBlog = {
+    author:'George Gilder',
+    likes:12
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(400)
+
+  const blogsPostPost = await helper.blogsInDb()
+  expect(blogsPostPost).toHaveLength(helper.initialBlogs.length)
+})
 
 afterAll(() => {
   mongoose.connection.close()

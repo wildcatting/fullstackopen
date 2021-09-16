@@ -21,6 +21,10 @@ blogsRouter.get('/:id', (request, response, next) => {
 blogsRouter.post('/', (request, response, next) => {
   const body = request.body
 
+  if (body.title === undefined || body.url === undefined) {
+    return response.status(400).end()
+  }
+
   const blog = new Blog({
     title: body.title,
     author: body.author,
