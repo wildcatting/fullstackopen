@@ -62,19 +62,24 @@ test('a valid blog can be added', async () => {
   expect(titles).toContain('Gilder\'s Daily Prophecy')
 })
 
-/* test('blog without title is not added', async () => {
+test('if likes are missing, default likes to 0', async () => {
   const newBlog = {
-    author: 'Patrick Jones'
+    title:'Man on the Margin',
+    author:'Michael Kendall',
+    url:'https://manonthemargin.com',
   }
 
   await api
     .post('/api/blogs')
     .send(newBlog)
-    .expect(400)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
 
   const blogsPostPost = await helper.blogsInDb()
-  expect(blogsPostPost).toHaveLength(helper.initialBlogs.length)
-}) */
+  const addedBlog = await blogsPostPost.find(b => b.title === 'Man on the Margin')
+  expect(addedBlog.likes).toBe(0)
+})
+
 
 afterAll(() => {
   mongoose.connection.close()
