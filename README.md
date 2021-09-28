@@ -23,8 +23,6 @@ This repo contains my submissions to the 2021 course exercises.
 | 7    | -      |
 | 8    | -      |
 | 9    | -      |
-| 10   | -      |
-| 11   | -      |
 
 ## Table of Contents
 
@@ -99,18 +97,3 @@ This repo contains my submissions to the 2021 course exercises.
 - First Steps with Typescript
 - Typing express app
 - React with types
-
-### Part 10: React Native
-
-- Introduction to React Native
-- React Native basics
-- Communicating with server
-- Testing and extending our application
-
-### Part 11: CI/CD
-
-- Introduction to CI/CD
-- Getting started with GitHub Actions
-- Deployment
-- Keeping green
-- Expanding Further
