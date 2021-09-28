@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/blogs/ 
+Content-Type: application/json
+Authorization:  bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bnN1bmciLCJpZCI6IjYxNTI2N2Q2MzVjNmE5NDRjYjk0NGQwYiIsImlhdCI6MTYzMjc5NzQ5NX0.64E1gNoD-H1em5TArX2B6_0_HHimTgvawgY25SgUEzc
+
+{
+    "title": "the blog i never wrote",
+    "author": "Jun Sung Lee",
+    "url": "https://junsunglee.com",
+    "likes": 500000
+}
