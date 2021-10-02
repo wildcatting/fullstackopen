@@ -61,7 +61,7 @@ describe('addition of a new blog', () => {
 
     const titles = blogsAtEnd.map(b => b.title)
     expect(titles).toContain('Gilder\'s Daily Prophecy')
-  })
+  }, 100000)
 
   test('if likes are missing, default likes to 0', async () => {
     const newBlog = {
