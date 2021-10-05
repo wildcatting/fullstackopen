@@ -17,8 +17,8 @@ This repo contains my submissions to the 2021 course exercises.
 | 1    | ✔️     |
 | 2    | ✔️     |
 | 3    | ✔️     |
-| 4    | 🛠️     |
-| 5    | -      |
+| 4    | ✔️     |
+| 5    | 🛠️     |
 | 6    | -      |
 | 7    | -      |
 | 8    | -      |
@@ -62,7 +62,7 @@ This repo contains my submissions to the 2021 course exercises.
 
 ### Part 5: Testing React apps, custom hooks
 
-- Login in frontend
+- [Login in frontend](https://fullstackopen.com/en/part5/login_in_frontend)
 - props.children and proptypes
 - Testing React apps
 - End to end -testing
