@@ -5,13 +5,21 @@ const initialBlogs = [
   {
     title: 'Jun\'s Stack',
     author: 'Jun Sung Lee',
-    url: 'https://junsunglee.com'
+    url: 'https://junsunglee.com',
+    likes: 7
   },
   {
     title: 'Thoughts and Ideas',
     author: 'Matthew C. Lind',
-    url: 'http://matthewclind.com'
+    url: 'http://matthewclind.com',
+    likes: 5
   },
+  {
+    title: 'The Masculinist',
+    author: 'Aaron Renn',
+    url:'https://themasculinist.com',
+    likes: 111111
+  }
 ]
 
 const blogsInDb = async () => {

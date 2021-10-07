@@ -1,29 +1,19 @@
 const bcrypt = require('bcrypt')
-const usersRouter = require('express').Router()
+const router = require('express').Router()
 const User = require('../models/user')
 
-usersRouter.post('/', async (request, response) => {
-  const body = request.body
+router.post('/', async (request, response) => {
+  const { password, name, username } = request.body
 
-  if (body.username.length < 3) {
-    return response
-      .status(400)
-      .json({ error: 'username needs to be at least 3 characters' })
-  }
-
-  if (body.password.length < 3) {
-    return response
-      .status(400)
-      .json({ error: 'password needs to be at least 3 characters' })
+  if (!password || password.length < 3) {
+    return response.status(400).send({ error: 'password needs to be at least 3 characters' })
   }
 
   const saltRounds = 10
-  const passwordHash = await bcrypt.hash(body.password, saltRounds)
+  const passwordHash = await bcrypt.hash(password, saltRounds)
 
   const user = new User({
-    username: body.username,
-    name: body.name,
-    passwordHash,
+    username, name, passwordHash,
   })
 
   const savedUser = await user.save()
@@ -31,11 +21,12 @@ usersRouter.post('/', async (request, response) => {
   response.json(savedUser)
 })
 
-usersRouter.get('/', async (request, response) => {
+router.get('/', async (request, response) => {
   const users = await User
-    .find({}).populate('user', { username: 1, name: 1 })
+    .find({})
+    .populate('user', { username: 1, name: 1 })
 
-  response.json(users)
+  response.json(users.map(u => u.toJSON()))
 })
 
-module.exports = usersRouter
+module.exports = router
