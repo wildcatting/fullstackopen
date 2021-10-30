@@ -33,10 +33,33 @@ const App = () => {
     }
   }
 
+  const handleLogout = async event => {
+    event.preventDefault()
+    try {
+      window.localStorage.removeItem('loggedBlogAppUser')
+      setUser(null)
+    } catch (exception) {
+      setErrorMessage('ulos kirjautuminen ei onnistu')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
+  }
+
+
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
     )  
+  }, [])
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      blogService.setToken(user.token)
+    }
   }, [])
 
   const loginForm = () => (
@@ -72,7 +95,10 @@ const App = () => {
         ? loginForm()
         : <div>
             <h2>blogs</h2>
-            <p>{user.name} logged-in</p>
+            <p>
+              {user.name} logged in
+              <button onClick={handleLogout}>logout</button>            
+            </p>
             {blogs.map(blog =>
               <Blog key={blog.id} blog={blog} />
             )}
