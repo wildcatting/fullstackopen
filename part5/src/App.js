@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Blog from './components/Blog'
+import BlogForm from './components/BlogForm'
+import LoginForm from './components/LoginForm'
 import Notification from './components/Notification'
 import blogService from './services/blogs'
 import loginService from './services/login' 
@@ -39,7 +41,30 @@ const App = () => {
       window.localStorage.removeItem('loggedBlogAppUser')
       setUser(null)
     } catch (exception) {
-      setErrorMessage('ulos kirjautuminen ei onnistu')
+      setErrorMessage('cannot logout')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
+  }
+
+  const createBlog = async (BlogToAdd) => {
+    try {
+      const createdBlog = await blogService
+        .create(BlogToAdd)
+      setErrorMessage(
+        `Blog ${BlogToAdd.title} was successfully added`
+      )
+      setBlogs(blogs.concat(createdBlog))
+      setErrorMessage(null)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    } catch(exception) {
+      setErrorMessage(
+        `Cannot add blog ${BlogToAdd.title}`
+      )
+      setErrorMessage(null)
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -62,43 +87,24 @@ const App = () => {
     }
   }, [])
 
-  const loginForm = () => (
-    <form onSubmit={handleLogin}>
-      <h2>login to blogs</h2>
-      <div>
-        username
-          <input
-          type="text"
-          value={username}
-          name="Username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
-      </div>
-      <div>
-        password
-          <input
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({ target }) => setPassword(target.value)}
-        />
-      </div>
-      <button type="submit">login</button>
-    </form>      
-  )
-
   return (
     <div>
       <Notification message={errorMessage} />
-
       {user === null 
-        ? loginForm()
+        ? <LoginForm 
+            handleLogin={handleLogin}
+            username={username}
+            setUsername={setUsername}
+            setPassword={setPassword}
+            password={password}
+          />
         : <div>
             <h2>blogs</h2>
             <p>
               {user.name} logged in
               <button onClick={handleLogout}>logout</button>            
             </p>
+            <BlogForm createBlog={createBlog} />
             {blogs.map(blog =>
               <Blog key={blog.id} blog={blog} />
             )}
