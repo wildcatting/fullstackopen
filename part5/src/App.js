@@ -47,6 +47,16 @@ const App = () => {
       })
   }
   
+  const updateBlog = async (blogObject) => {
+    blogService
+      .update(blogObject)
+      .then(returnedBlog => {
+        setBlogs(blogs.map(blog => blog.id !== blogObject.id ? blog : returnedBlog))
+        setErrorMessage(`${blogObject.title} was successfully updated`)
+        setColor('green')
+      })
+  }
+
   const handleLogin = async event => {
     event.preventDefault()
     try {
@@ -115,7 +125,7 @@ const App = () => {
             </p>
             {blogForm()}
             {blogs.map(blog =>
-              <Blog key={blog.id} blog={blog} />
+              <Blog key={blog.id} blog={blog} updateBlog={updateBlog}/>
             )}
           </div>
       }
