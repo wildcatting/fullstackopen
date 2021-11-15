@@ -36,7 +36,7 @@ const App = () => {
     }
   }, [])
 
-  const addBlog = async blogObject => {
+  const addBlog = blogObject => {
     blogFormRef.current.toggleVisibility()
     blogService
       .create(blogObject)
@@ -47,7 +47,7 @@ const App = () => {
       })
   }
   
-  const updateBlog = async blogObject => {
+  const updateBlog = blogObject => {
     blogService
       .update(blogObject)
       .then(returnedBlog => {
@@ -82,15 +82,8 @@ const App = () => {
 
   const handleLogout = async event => {
     event.preventDefault()
-    try {
-      window.localStorage.removeItem('loggedBlogAppUser')
-      setUser(null)
-    } catch (exception) {
-      setErrorMessage('cannot logout')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    }
+    window.localStorage.removeItem('loggedBlogAppUser')
+    setUser(null)
   }
 
   const loginForm = () => (
