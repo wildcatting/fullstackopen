@@ -36,7 +36,7 @@ const App = () => {
     }
   }, [])
 
-  const addBlog = (blogObject) => {
+  const addBlog = async blogObject => {
     blogFormRef.current.toggleVisibility()
     blogService
       .create(blogObject)
@@ -47,7 +47,7 @@ const App = () => {
       })
   }
   
-  const updateBlog = async (blogObject) => {
+  const updateBlog = async blogObject => {
     blogService
       .update(blogObject)
       .then(returnedBlog => {

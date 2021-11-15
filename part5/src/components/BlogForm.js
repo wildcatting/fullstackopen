@@ -5,21 +5,21 @@ const BlogForm = ({ createBlog }) => {
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
   
-  const handleTitleChange = (event) =>
+  const handleTitleChange = event =>
     setTitle(event.target.value)
 
-  const handleAuthorChange = (event) =>
+  const handleAuthorChange = event =>
     setAuthor(event.target.value)
 
-  const handleUrlChange = (event) =>
+  const handleUrlChange = event =>
     setUrl(event.target.value)
 
-  const addBlog = (event) => {
+  const addBlog = event => {
     event.preventDefault()
     createBlog({
-      title: title,
-      author: author,
-      url: url
+      title,
+      author,
+      url
     })
     setTitle('')
     setAuthor('')
