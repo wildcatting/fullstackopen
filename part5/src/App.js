@@ -1,40 +1,36 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+
 import Blog from './components/Blog'
-import Notification from './components/Notification'
-import LoginForm from './components/LoginForm'
 import BlogForm from './components/BlogForm'
+import LoginForm from './components/LoginForm'
+import Notification from './components/Notification'
 import Togglable from './components/Togglable'
 import blogService from './services/blogs'
-import loginService from './services/login' 
+import loginService from './services/login'
 
-const App = () => {
-  const [blogs, setBlogs] = useState([])
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [color, setColor] = useState('')
+const App =
+    () => {
+      const [blogs, setBlogs] = useState([])
+      const [errorMessage, setErrorMessage] = useState(null)
+      const [color, setColor] = useState('')
 
-  const [username, setUsername] = useState('mluukkai')
-  const [password, setPassword] = useState('salainen') 
+      const [username, setUsername] = useState('mluukkai')
+      const [password, setPassword] = useState('salainen')
 
-  const [user, setUser] = useState(null)
+      const [user, setUser] = useState(null)
 
-  const blogFormRef = useRef()
+      const blogFormRef = useRef()
 
-  useEffect(() => {
-    blogService
-      .getAll()
-      .then(blogs =>
-      setBlogs(blogs)
-    )  
-  }, [])
+      useEffect(() => {blogService.getAll().then(blogs => setBlogs(blogs))}, [])
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      blogService.setToken(user.token)
-    }
-  }, [])
+      useEffect(() => {
+        const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+        if (loggedUserJSON) {
+          const user = JSON.parse(loggedUserJSON)
+          setUser(user)
+          blogService.setToken(user.token)
+        }
+      }, [])
 
   const addBlog = blogObject => {
     blogFormRef.current.toggleVisibility()
@@ -42,7 +38,8 @@ const App = () => {
       .create(blogObject)
       .then(returnedBlog => {
         setBlogs(blogs.concat(returnedBlog))
-        setErrorMessage(`added a new blog: ${blogObject.title} by ${blogObject.author}`)
+    setErrorMessage(
+        `added a new blog: ${blogObject.title} by ${blogObject.author}`)
         setColor('green')
       })
   }
@@ -56,7 +53,7 @@ const App = () => {
             ? updatedBlog 
             : blog
         ))
-        setErrorMessage(`${updatedBlog.title} was successfully updated`)
+    setErrorMessage(`${updatedBlog.title} was successfully updated`)
         setColor('green')
       })
   }
@@ -64,14 +61,9 @@ const App = () => {
   const handleLogin = async event => {
     event.preventDefault()
     try {
-      const user = await loginService.login({
-        username, 
-        password
-      })
-      
-      window.localStorage.setItem(
-        'loggedBlogappUser', JSON.stringify(user)
-      ) 
+      const user = await loginService.login({username, password})
+
+      window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
       blogService.setToken(user.token)
       setUser(user)
       setUsername('')
@@ -79,9 +71,7 @@ const App = () => {
     } catch (exception) {
       setErrorMessage('wrong username/password')
       setColor('red')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
+      setTimeout(() => {setErrorMessage(null)}, 5000)
     }
   }
 
@@ -97,7 +87,8 @@ const App = () => {
       password={password}
       handleUsernameChange={({ target }) => setUsername(target.value)}
       handlePasswordChange={({ target }) => setPassword(target.value)}
-      handleSubmit={handleLogin}
+      handleSubmit={
+    handleLogin}
     />
   )
 
@@ -136,6 +127,6 @@ const App = () => {
       }
     </div>
   )
-}
+    }
 
 export default App
