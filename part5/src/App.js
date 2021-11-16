@@ -52,9 +52,9 @@ const App = () => {
       .update(blogId, blogObject)
       .then(updatedBlog => {
         setBlogs(blogs.map(blog => 
-          blog.id !== blogObject.id 
-            ? blog 
-            : updatedBlog
+          blog.id === blogObject.id 
+            ? updatedBlog 
+            : blog
         ))
         setErrorMessage(`${updatedBlog.title} was successfully updated`)
         setColor('green')
@@ -107,6 +107,8 @@ const App = () => {
     </Togglable>
   )
 
+  const byLikes = (b1, b2) => b2.likes - b1.likes
+
   return (
     <div>
       <Notification 
@@ -122,7 +124,7 @@ const App = () => {
               <button onClick={handleLogout}>logout</button>
             </p>
             {blogForm()}
-            {blogs.map(blog =>
+            {blogs.sort(byLikes).map(blog =>
               <Blog 
                 key={blog.id} 
                 blog={blog} 
