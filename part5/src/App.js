@@ -44,14 +44,23 @@ const App = () => {
     });
   };
 
-  const updateBlog = async (blogId, blogObject) => {
-    blogService.update(blogId, blogObject).then((updatedBlog) => {
+  const updateBlog = async (blogObject) => {
+    blogService.update(blogObject).then((updatedBlog) => {
       setBlogs(
         blogs.map((blog) => (blog.id !== blogObject.id ? blog : updatedBlog))
       );
       setErrorMessage(`${updatedBlog.title} was successfully updated`);
       setColor("green");
     });
+  };
+
+  const deleteBlog = async (blogObject) => {
+    if (window.confirm(`Delete ${blogObject.title} ?`)) {
+      blogService.remove(blogObject.id);
+      setErrorMessage(`${blogObject.title} was successfully deleted`);
+      setColor("green");
+      setBlogs(blogs.filter(blog => blog.id !== blogObject.id));
+    }
   };
 
   const handleLogin = async (event) => {
@@ -116,6 +125,7 @@ const App = () => {
               blog={blog}
               user={user}
               updateBlog={updateBlog}
+              deleteBlog={deleteBlog}
             />
           ))}
         </div>
