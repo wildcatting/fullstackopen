@@ -1,6 +1,6 @@
-import React , { useState } from 'react'
+import React, {useState} from 'react'
 
-const Blog = ({ blog, user, updateBlog }) => {
+const Blog = ({blog, user, updateBlog}) => {
   const [blogObject, setBlogObject] = useState(blog)
   const [visible, setVisible] = useState(false)
   const showWhenVisible = { display: visible ? '' : 'none' }
