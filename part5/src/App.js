@@ -95,6 +95,8 @@ const App = () => {
     </Togglable>
   );
 
+  const byLikes = (b1, b2) => b2.likes - b1.likes;
+
   return (
     <div>
       <Notification message={errorMessage} result={color} />
@@ -108,7 +110,7 @@ const App = () => {
             <button onClick={handleLogout}>logout</button>
           </p>
           {blogForm()}
-          {blogs.map((blog) => (
+          {blogs.sort(byLikes).map((blog) => (
             <Blog
               key={blog.id}
               blog={blog}
