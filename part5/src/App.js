@@ -47,12 +47,16 @@ const App = () => {
       })
   }
   
-  const updateBlog = blogObject => {
+  const updateBlog = async (blogId, blogObject) => {
     blogService
-      .update(blogObject)
-      .then(returnedBlog => {
-        setBlogs(blogs.map(blog => blog.id !== blogObject.id ? blog : returnedBlog))
-        setErrorMessage(`${blogObject.title} was successfully updated`)
+      .update(blogId, blogObject)
+      .then(updatedBlog => {
+        setBlogs(blogs.map(blog => 
+          blog.id !== blogObject.id 
+            ? blog 
+            : updatedBlog
+        ))
+        setErrorMessage(`${updatedBlog.title} was successfully updated`)
         setColor('green')
       })
   }
@@ -61,7 +65,8 @@ const App = () => {
     event.preventDefault()
     try {
       const user = await loginService.login({
-        username, password,
+        username, 
+        password
       })
       
       window.localStorage.setItem(
@@ -118,7 +123,12 @@ const App = () => {
             </p>
             {blogForm()}
             {blogs.map(blog =>
-              <Blog key={blog.id} blog={blog} updateBlog={updateBlog}/>
+              <Blog 
+                key={blog.id} 
+                blog={blog} 
+                user={user} 
+                updateBlog={updateBlog} 
+              />
             )}
           </div>
       }
