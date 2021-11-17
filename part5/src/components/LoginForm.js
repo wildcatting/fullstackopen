@@ -29,7 +29,7 @@ const LoginForm = ({
       />
     </div>
     <button type="submit">login</button>
-  </form>      
+  </form>
 )
 
 LoginForm.propTypes = {
