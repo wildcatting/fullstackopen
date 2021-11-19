@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const LoginForm = ({ 
-  handleSubmit, 
-  username, 
-  handleUsernameChange, 
-  password, 
-  handlePasswordChange 
+const LoginForm = ({
+  handleSubmit,
+  username,
+  handleUsernameChange,
+  password,
+  handlePasswordChange
 }) => (
   <form onSubmit={handleSubmit}>
     <h2>login to blogs</h2>
