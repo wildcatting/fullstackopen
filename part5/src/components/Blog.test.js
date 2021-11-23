@@ -11,6 +11,8 @@ describe('test blog components', () => {
     likes: '111111'
   }
 
+  const mockHandler = jest.fn()
+
   test('renders content', () => {
     const component = render(
       <Blog blog={blog} />
@@ -23,10 +25,8 @@ describe('test blog components', () => {
   })
 
   test('clicking the button displays url and likes', () => {
-    const mockHandler = jest.fn()
-
     const component = render(
-      <Blog blog={blog} toggleImportance={mockHandler} />
+      <Blog blog={blog} updateBlog={mockHandler} />
     )
 
     const button = component.getByText('view')
@@ -39,5 +39,20 @@ describe('test blog components', () => {
     expect(component.container).toHaveTextContent(
       '111111'
     )
+  })
+
+  test('calls the update handler twice when clicking "like" twice', () => {
+    const component = render(
+      <Blog blog={blog} updateBlog={mockHandler} />
+    )
+
+    const viewButton = component.getByText('view')
+    fireEvent.click(viewButton)
+
+    const like = component.getByText('like')
+    fireEvent.click(like)
+    fireEvent.click(like)
+
+    expect(mockHandler.mock.calls).toHaveLength(2)
   })
 })
