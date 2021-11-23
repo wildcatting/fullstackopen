@@ -1,6 +1,8 @@
-import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent } from '@testing-library/react'
+
+import {fireEvent, render} from '@testing-library/react'
+import React from 'react'
+
 import Blog from './Blog'
 
 describe('test blog components', () => {
@@ -13,7 +15,8 @@ describe('test blog components', () => {
 
   test('renders content', () => {
     const component = render(
-      <Blog blog={blog} />
+      <Blog blog={
+  blog} />
     )
 
     expect(component.container).toHaveTextContent(
@@ -29,12 +32,10 @@ describe('test blog components', () => {
       <Blog blog={blog} toggleImportance={mockHandler} />
     )
 
-    const button = component.getByText('view')
-    fireEvent.click(button)
+const button = component.getByText('view')
+fireEvent.click(button)
 
-    expect(component.container).toHaveTextContent(
-      'https://themasculinist.com'
-    )
+expect(component.container).toHaveTextContent('https://themasculinist.com')
 
     expect(component.container).toHaveTextContent(
       '111111'
