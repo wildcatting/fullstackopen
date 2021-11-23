@@ -1,44 +1,38 @@
-import '@testing-library/jest-dom/extend-expect'
+import "@testing-library/jest-dom/extend-expect";
 
-import {fireEvent, render} from '@testing-library/react'
-import React from 'react'
+import { fireEvent, render } from "@testing-library/react";
+import React from "react";
 
-import Blog from './Blog'
+import Blog from "./Blog";
 
-describe('test blog components', () => {
+describe("test blog components", () => {
   const blog = {
-    title: 'The Masculinist',
-    author: 'Aaron Renn',
-    url: 'https://themasculinist.com',
-    likes: '111111'
-  }
+    title: "The Masculinist",
+    author: "Aaron Renn",
+    url: "https://themasculinist.com",
+    likes: "111111",
+  };
 
-  test('renders content', () => {
-    const component = render(
-      <Blog blog={
-  blog} />
-    )
+  test("renders content", () => {
+    const component = render(<Blog blog={blog} />);
 
     expect(component.container).toHaveTextContent(
-      'The Masculinist by Aaron Renn'
-    )
+      "The Masculinist by Aaron Renn"
+    );
+  });
 
-  })
-
-  test('clicking the button displays url and likes', () => {
-    const mockHandler = jest.fn()
+  test("clicking the button displays url and likes", () => {
+    const mockHandler = jest.fn();
 
     const component = render(
       <Blog blog={blog} toggleImportance={mockHandler} />
-    )
+    );
 
-const button = component.getByText('view')
-fireEvent.click(button)
+    const button = component.getByText("view");
+    fireEvent.click(button);
 
-expect(component.container).toHaveTextContent('https://themasculinist.com')
+    expect(component.container).toHaveTextContent("https://themasculinist.com");
 
-    expect(component.container).toHaveTextContent(
-      '111111'
-    )
-  })
-})
+    expect(component.container).toHaveTextContent("111111");
+  });
+});
