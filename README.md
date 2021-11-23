@@ -65,7 +65,7 @@ This repo contains my submissions to the 2021 course exercises.
 - [Login in frontend](https://fullstackopen.com/en/part5/login_in_frontend)
 - [props.children and proptypes](https://fullstackopen.com/en/part5/props_children_and_proptypes)
 - [Testing React apps](https://fullstackopen.com/en/part5/testing_react_apps)
-- End to end -testing
+- [End to end -testing](https://fullstackopen.com/en/part5/end_to_end_testing)
 
 ### Part 6: State management with Redux
 
