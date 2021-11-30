@@ -33,15 +33,25 @@ const App = () => {
     }
   }, [])
 
-  const addBlog = (blogObject) => {
-    blogFormRef.current.toggleVisibility()
-    blogService.create(blogObject).then((returnedBlog) => {
-      setBlogs(blogs.concat(returnedBlog))
+  const addBlog = async (blogObject) => {
+    try {
+      blogFormRef.current.toggleVisibility()
+      const createdBlog = await blogService
+        .create(blogObject)
+      setBlogs(blogs.concat(createdBlog))
       setErrorMessage(
         `added a new blog: ${blogObject.title} by ${blogObject.author}`
       )
       setColor('green')
-    })
+    } catch(exception) {
+      setErrorMessage(
+        `Cannot add blog ${blogObject.title}`
+      )
+      setColor('red')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
   }
 
   const updateBlog = async (blogObject) => {

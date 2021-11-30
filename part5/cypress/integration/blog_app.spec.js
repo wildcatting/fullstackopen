@@ -39,4 +39,19 @@ describe('Blog app', function() {
     
     })
   })
+
+  describe('When logged in', function() {
+    beforeEach(function() {
+      cy.login({ username: 'mluukkai', password: 'salainen' })
+    })
+
+    it('A blog can be created', function() {
+      cy.contains('create new blog').click()
+      cy.get('#title').type('Sapiens')
+      cy.get('#author').type('Yuval Harari')
+      cy.get('#url').type('https://ynharari.com/book/sapiens-2')
+      cy.get('#create-button').click()
+      cy.contains('Sapiens')  
+    })
+  })
 })
