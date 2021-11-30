@@ -71,6 +71,13 @@ describe('Blog app', function() {
             cy.get('#like-button').click()
             cy.contains('1')
           })
+
+          it('user who created a blog can delete it', function() {
+            cy.contains('Jun Sung').click()
+            cy.contains('view').click()
+            cy.get('#delete-button').click()
+            cy.get('html').should('not.contain', 'Jun Sung')
+          })
         })
       })
   
