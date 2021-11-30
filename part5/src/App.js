@@ -13,8 +13,8 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [color, setColor] = useState('')
 
-  const [username, setUsername] = useState('mluukkai')
-  const [password, setPassword] = useState('salainen')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   const [user, setUser] = useState(null)
 
@@ -74,7 +74,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setErrorMessage('wrong username/password')
+      setErrorMessage('wrong credentials')
       setColor('red')
       setTimeout(() => {
         setErrorMessage(null)
