@@ -57,29 +57,28 @@ describe('Blog app', function() {
     })
 
     describe('and a blog exists', function () {
-        describe('and several blogs exist', function () {
-          beforeEach(function () {
-            cy.createBlog({ title: 'Jun Sung', author: 'Jun Sung Lee', url: 'https://junsunglee.com' })
-            cy.createBlog({ title: 'Thoughts and Ideas', author: 'Matt Lind', url: 'https://matthewcliend.com' })
-            cy.createBlog({ title: 'Technology For Liberty', author: 'Matt Lind', url: 'https://technologyforliberty.com' })
-          })
+      describe('and several blogs exist', function () {
+        beforeEach(function () {
+          cy.createBlog({ title: 'Jun Sung', author: 'Jun Sung Lee', url: 'https://junsunglee.com', likes: 100 })
+          cy.createBlog({ title: 'Thoughts and Ideas', author: 'Matt Lind', url: 'https://matthewcliend.com', likes: 10 })
+          cy.createBlog({ title: 'Technology For Liberty', author: 'Matt Lind', url: 'https://technologyforliberty.com', likes: 1 })
+        })
   
-          it('one of those can be liked', function () {
-            cy.contains('Jun Sung').click()
-            cy.contains('view').click()
-            cy.contains('0')
-            cy.get('#like-button').click()
-            cy.contains('1')
-          })
+        it('one of those can be liked', function () {
+          cy.contains('Jun Sung').click()
+          cy.contains('view').click()
+          cy.contains('100')
+          cy.get('#like-button').click()
+          cy.contains('101')
+        })
 
-          it('user who created a blog can delete it', function() {
-            cy.contains('Jun Sung').click()
-            cy.contains('view').click()
-            cy.get('#delete-button').click()
-            cy.get('html').should('not.contain', 'Jun Sung')
-          })
+        it('user who created a blog can delete it', function() {
+          cy.contains('Jun Sung').click()
+          cy.contains('view').click()
+          cy.get('#delete-button').click()
+          cy.get('.error').should('contain', 'Jun Sung was successfully deleted')
         })
       })
-  
+    })
   })
 })
