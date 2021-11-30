@@ -1,3 +1,5 @@
+const { listenerCount } = require("../../../part4/models/blog")
+
 describe('Blog app', function() {
   beforeEach(function() {
     cy.request('POST', 'http://localhost:3001/api/testing/reset')
@@ -52,6 +54,31 @@ describe('Blog app', function() {
       cy.get('#url').type('https://ynharari.com/book/sapiens-2')
       cy.get('#create-button').click()
       cy.contains('Sapiens')  
+    })
+
+    describe('and a blog exists', function () {
+      describe('and several blogs exist', function () {
+        beforeEach(function () {
+          cy.createBlog({ title: 'Jun Sung', author: 'Jun Sung Lee', url: 'https://junsunglee.com', likes: 100 })
+          cy.createBlog({ title: 'Thoughts and Ideas', author: 'Matt Lind', url: 'https://matthewcliend.com', likes: 10 })
+          cy.createBlog({ title: 'Technology For Liberty', author: 'Matt Lind', url: 'https://technologyforliberty.com', likes: 1 })
+        })
+  
+        it('one of those can be liked', function () {
+          cy.contains('Jun Sung').click()
+          cy.contains('view').click()
+          cy.contains('100')
+          cy.get('#like-button').click()
+          cy.contains('101')
+        })
+
+        it('user who created a blog can delete it', function() {
+          cy.contains('Jun Sung').click()
+          cy.contains('view').click()
+          cy.get('#delete-button').click()
+          cy.get('.error').should('contain', 'Jun Sung was successfully deleted')
+        })
+      })
     })
   })
 })
