@@ -1,28 +1,11 @@
 # [Full Stack Open 2021](https://fullstackopen.com/en/ "Full Stack Open 2021 Homepage")
 
-This course by the University of Helsinki is an introduction to modern web
-development with JavaScript. The focus is on single page applications
-implemented with React and supported with RESTful and GraphQL web services
-implemented with Node.js. New material on TypeScript is included in the 2021
-edition. Other topics include debugging applications, configuration, and
-managing runtime environments and NoSQL databases.
+This course by the University of Helsinki is an introduction to modern web development with JavaScript. The focus is on single page applications
+implemented with React and supported with RESTful and GraphQL web services implemented with Node.js. Other topics include debugging applications, configuration, and managing runtime environments and NoSQL databases.
 
-This repo contains my submissions to the 2021 course exercises.
+This repo contains my certificate of completion and exercises to the 2021 course.
 
-## Course Progress
-
-| part | status |
-| ---- | ------ |
-| 0    | ✔️     |
-| 1    | ✔️     |
-| 2    | ✔️     |
-| 3    | ✔️     |
-| 4    | ✔️     |
-| 5    | 🛠️     |
-| 6    | -      |
-| 7    | -      |
-| 8    | -      |
-| 9    | -      |
+![[Full Stack Open Certificate](Certificate.png "Full Stack Open Certificate")](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/9d01d53ff246f4c0f23b7ea4e9a90746)
 
 ## Table of Contents
 
@@ -66,34 +49,3 @@ This repo contains my submissions to the 2021 course exercises.
 - [props.children and proptypes](https://fullstackopen.com/en/part5/props_children_and_proptypes)
 - [Testing React apps](https://fullstackopen.com/en/part5/testing_react_apps)
 - [End to end -testing](https://fullstackopen.com/en/part5/end_to_end_testing)
-
-### Part 6: State management with Redux
-
-- Flux-architecture and Redux
-- Many reducers
-- Communicating with server in a redux application
-- connect
-
-### Part 7: React router, styling app with CSS and webpack
-
-- React-router
-- Custom hooks
-- More about styles
-- Webpack
-- Class components, E2E-testing
-- Exercises: extending the bloglist
-
-### Part 8: GraphQL
-
-- GraphQL-server
-- React and GraphQL
-- Database and user administration
-- Login and updating the cache
-- Fragments and subscriptions
-
-### Part 9: Typescript
-
-- Background and Introduction
-- First Steps with Typescript
-- Typing express app
-- React with types
